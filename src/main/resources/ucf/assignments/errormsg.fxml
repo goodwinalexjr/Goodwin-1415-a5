@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="217.0" prefWidth="288.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.errorcontroller">
+   <children>
+      <TextArea fx:id="errormsg_text" editable="false" layoutX="27.0" layoutY="40.0" prefHeight="137.0" prefWidth="234.0" promptText="" wrapText="true" />
+   </children>
+</AnchorPane>

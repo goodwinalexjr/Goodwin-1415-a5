@@ -6,12 +6,19 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
@@ -41,7 +48,7 @@ public class UIController implements Initializable {
     String field = null;
     public double values = 0;
     public final ObservableList<ListOfInventory> loi = FXCollections.observableArrayList();
-
+    public ObservableList<errormsgs> ers = FXCollections.observableArrayList();
 
 
     //set up a sorted list and also the cell factory to be able to be displayed
@@ -84,11 +91,61 @@ public class UIController implements Initializable {
 
     }
 
-    public void Add_Button_Clicked(ActionEvent actionEvent) {
-        addFunction();
+    public void Add_Button_Clicked(ActionEvent actionEvent) throws IOException {
+        AddClass ac = new AddClass();
+        int test = ac.addFunction(loi, Value_text, Name_text, Serial_Number_Text);
+        String errormsg = "";
+
+        switch(test){
+            case 0:
+                break;
+            case 1:
+                errormsg = "Value needs to be filled.";
+                break;
+            case 2:
+                errormsg = "Name needs to be between 2 and 256 characters. You have " + Name_text.getText().length() + " characters.";
+                break;
+            case 3:
+                errormsg = "Name needs to be filled.";
+                break;
+            case 4:
+                errormsg = "Serial Number needs to be filled";
+                break;
+            case 5:
+                errormsg = "The serial Number is Already entered";
+                break;
+            case 6:
+                errormsg = "Serial number format needs to be 10 numbers and letters. You have " + Serial_Number_Text.getText().length() + " characters.";
+                break;
+            case 7:
+                errormsg = "Serial Number can only be 0-9 and A-Z/a-z";
+                break;
+            case 8:
+                errormsg = "You may have a extra . in Value";
+                break;
+            case 9:
+                errormsg = "Value must be currency";
+                break;
+
+        }
+        if(errormsg.matches("")){
+
+        }
+        else{
+
+            FXMLLoader load = new FXMLLoader(getClass().getResource("errormsg.fxml"));
+            Parent page = (Parent) load.load();
+            Stage stage = new Stage();
+            errorcontroller ec = load.getController();
+            ec.text(errormsg);
+            stage.setScene(new Scene(page));
+            stage.setTitle("Error");
+            stage.show();
+
+        }
+        ers.removeAll();
 
     }
-
 
 
     public void Remove_Button_Clicked(ActionEvent actionEvent) {
@@ -100,70 +157,4 @@ public class UIController implements Initializable {
     public void Clear_Button_Clicked(ActionEvent actionEvent) {
     }
 
-    public void addFunction(){
-        DecimalFormat df = new DecimalFormat("#.00");
-
-
-        if(Value_text.getText().isBlank()){
-            //error for a blank space
-            System.out.println("Blank space in value");
-
-        }
-        else if(Value_text.textProperty().getValue().matches("[0-9 + .]+")){
-
-            String value_texts = Value_text.getText();
-            try {
-
-                    values = Double.parseDouble(value_texts);
-
-                if(Name_text.getText().length()==1 || Name_text.getText().length() > 256){
-                    System.out.println("Name needs to be between 2 and 256 characters");
-                    System.out.println(Name_text.getText().length());
-                }
-
-                else{
-                    if(Name_text.getText().isBlank()) {
-                        System.out.println("Blank Space in Name");
-                    }
-                    else {
-                        if(Serial_Number_Text.getText().isBlank()){
-                            System.out.println("Serial number is blank");
-                        }
-                        else {
-                            if(Serial_Number_Text.textProperty().getValue().matches("[0-9 + A-z]+")){
-                                if(Serial_Number_Text.textProperty().length().getValue().equals(10)){
-                                    SerialNumberCheck snc = new SerialNumberCheck();
-                                    if(snc.serialnumberchecker(loi,Serial_Number_Text) == 1) {
-                                        String val = String.valueOf(df.format(values));
-                                        ListOfInventory listofinventorty = new ListOfInventory("$" + val, Serial_Number_Text.getText(), Name_text.getText());
-                                        loi.addAll(listofinventorty);
-                                    }
-                                    else{
-                                        System.out.println("Serial Numbers Matching");
-                                    }
-                                }
-                                else{
-                                    System.out.println("Serial number format needs to be 10 numbers and letters");
-                                    System.out.println(Serial_Number_Text.textProperty().length().getValue());
-                                }
-                            }
-                            else{
-                                System.out.println("Serial Number can only be 0-9 and A-Z");
-                            }
-
-
-                        }
-                    }
-                }
-
-            }catch(NumberFormatException nfe) {
-                System.out.println("Number is inccorectly formatted");
-            }
-
-        }
-        else{
-            //error has letters and is not just numeric
-            System.out.println("Value is non numeric");
-        }
-    }
 }

@@ -28,7 +28,7 @@
       <Button layoutX="599.0" layoutY="578.0" mnemonicParsing="false" onAction="#Add_Button_Clicked" prefHeight="25.0" prefWidth="63.0" text="Add" />
       <Button layoutX="789.0" layoutY="124.0" mnemonicParsing="false" onAction="#Remove_Button_Clicked" text="Remove Selected" />
       <TextField fx:id="search" layoutX="24.0" layoutY="617.0" prefHeight="25.0" prefWidth="553.0" />
-      <TextField fx:id="hiddensearch" layoutX="733.0" layoutY="591.0" />
+      <TextField fx:id="hiddensearch" layoutX="870.0" layoutY="591.0" prefHeight="25.0" prefWidth="12.0" scaleX="0.0" scaleY="0.0" />
       <Button layoutX="599.0" layoutY="617.0" mnemonicParsing="false" onAction="#Search_Button_Clicked" prefHeight="25.0" prefWidth="63.0" text="Search" />
       <Button layoutX="670.0" layoutY="617.0" mnemonicParsing="false" onAction="#Clear_Button_Clicked" prefHeight="25.0" prefWidth="63.0" text="Clear" />
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="896.0">
