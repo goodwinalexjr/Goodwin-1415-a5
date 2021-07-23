@@ -14,17 +14,17 @@
    <children>
       <TableView fx:id="InventoryList" layoutX="14.0" layoutY="55.0" prefHeight="500.0" prefWidth="775.0">
         <columns>
-          <TableColumn fx:id="Value" prefWidth="148.0" text="Value $" />
+          <TableColumn fx:id="Value" prefWidth="148.0" text="Name" />
           <TableColumn fx:id="Serial_Number" prefWidth="148.0" text="Serial Number" />
-            <TableColumn fx:id="Name" prefWidth="164.0" text="Name" />
+            <TableColumn fx:id="Name" prefWidth="164.0" text="Value $" />
         </columns>
       </TableView>
-      <TextField fx:id="Value_text" layoutX="24.0" layoutY="578.0" prefHeight="25.0" prefWidth="167.0" />
-      <TextField fx:id="Serial_Number_Text" layoutX="227.0" layoutY="578.0" prefHeight="25.0" prefWidth="167.0" />
-      <TextField fx:id="Name_text" layoutX="426.0" layoutY="578.0" />
-      <Text layoutX="24.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Value" wrappingWidth="82.13671875" />
-      <Text layoutX="227.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serial Number" wrappingWidth="82.13671875" />
-      <Text layoutX="426.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="90.13671875" />
+      <TextField fx:id="Value_text" layoutX="410.0" layoutY="578.0" prefHeight="25.0" prefWidth="167.0" />
+      <TextField fx:id="Serial_Number_Text" layoutX="207.0" layoutY="578.0" prefHeight="25.0" prefWidth="167.0" />
+      <TextField fx:id="Name_text" layoutX="24.0" layoutY="578.0" />
+      <Text layoutX="410.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Value" wrappingWidth="82.13671875" />
+      <Text layoutX="207.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serial Number" wrappingWidth="82.13671875" />
+      <Text layoutX="24.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="90.13671875" />
       <Button layoutX="599.0" layoutY="578.0" mnemonicParsing="false" onAction="#Add_Button_Clicked" prefHeight="25.0" prefWidth="63.0" text="Add" />
       <Button layoutX="789.0" layoutY="124.0" mnemonicParsing="false" onAction="#Remove_Button_Clicked" text="Remove Selected" />
       <TextField fx:id="search" layoutX="24.0" layoutY="617.0" prefHeight="25.0" prefWidth="553.0" />
