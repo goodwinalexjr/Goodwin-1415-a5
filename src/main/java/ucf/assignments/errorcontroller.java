@@ -10,15 +10,11 @@ import javafx.scene.control.TextArea;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class errorcontroller implements Initializable {
+public class errorcontroller {
 
     @FXML
     public TextArea errormsg_text;
 
-
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 
     public void text(String error){
         errormsg_text.setText(error);

@@ -48,46 +48,21 @@ public class UIController implements Initializable {
     String field = null;
     public double values = 0;
     public final ObservableList<ListOfInventory> loi = FXCollections.observableArrayList();
-    public ObservableList<errormsgs> ers = FXCollections.observableArrayList();
+
 
 
     //set up a sorted list and also the cell factory to be able to be displayed
     //once that is set up can start on the add button
     //will set it up by using FilteredList and SortedList
     public void initialize(URL location, ResourceBundle resources) {
+
+
+
         Name.setCellValueFactory(new PropertyValueFactory<ListOfInventory, String>("name"));
         Value.setCellValueFactory(new PropertyValueFactory<ListOfInventory, String>("value"));
         Serial_Number.setCellValueFactory(new PropertyValueFactory<ListOfInventory, String>("serialNumber"));
 
 
-        FilteredList<ListOfInventory> filter = new FilteredList<ListOfInventory>(loi, b -> true);
-        hiddensearch.setText(field);
-
-        hiddensearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            filter.setPredicate(listofinventory -> {
-
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-                String lcf = newValue.toLowerCase();
-
-                if (listofinventory.getName().toLowerCase().indexOf(lcf) != -1) {
-                    return true;
-                } else if (listofinventory.getSerialNumber().toLowerCase().indexOf(lcf) != -1) {
-                    return true;
-                } else if (listofinventory.getValue().toLowerCase().indexOf(lcf) != -1) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-        });
-
-        SortedList<ListOfInventory> sort = new SortedList<>(filter);
-        sort.comparatorProperty().bind(InventoryList.comparatorProperty());
-
-        InventoryList.setItems(sort);
 
     }
 
@@ -129,7 +104,10 @@ public class UIController implements Initializable {
 
         }
         if(errormsg.matches("")){
-
+            InventoryList.setItems(loi);
+            Name_text.setText("");
+            Serial_Number_Text.setText("");
+            Value_text.setText("");
         }
         else{
 
@@ -143,12 +121,16 @@ public class UIController implements Initializable {
             stage.show();
 
         }
-        ers.removeAll();
+
 
     }
 
 
     public void Remove_Button_Clicked(ActionEvent actionEvent) {
+        removeitem ri = new removeitem();
+        int test = ri.remove(loi, InventoryList);
+        System.out.println(test);
+
     }
 
     public void Search_Button_Clicked(ActionEvent actionEvent) {
