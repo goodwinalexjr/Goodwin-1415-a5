@@ -16,7 +16,7 @@ public class EditClass {
 
 
         if (listOfInventory.getSerialNumber().isBlank()) {
-            return 10;
+            return 11;
 
         }
         else{
@@ -51,7 +51,7 @@ public class EditClass {
         ListOfInventory listOfInventory = InventoryList.getSelectionModel().getSelectedItem();
 
         if (listOfInventory.getName().isBlank()) {
-            return 10;
+            return 11;
 
         }
         else{
@@ -72,30 +72,32 @@ public class EditClass {
 
     }
 
-    public int editValue(ObservableList<ListOfInventory> loi, TextField Value_text, TableView<ListOfInventory> InventoryList){
+    public int editValue(ObservableList<ListOfInventory> loi, TextField Value_text, TableView<ListOfInventory> InventoryList) {
 
         ListOfInventory listOfInventory = InventoryList.getSelectionModel().getSelectedItem();
+        if (listOfInventory.getValue().isBlank()) {
+            return 11;
 
-        if(Value_text.getText().isBlank()){
-            return 1;
-        }
-        else{
-            String value_texts = Value_text.getText();
-            double values = 0;
-            if(Value_text.textProperty().getValue().matches("[0-9 + .]+")) {
-                try {
-                    values = Double.parseDouble(value_texts);
-                    String val = String.valueOf(df.format(values));
-                    listOfInventory.setName("$" + val);
-                    Value_text.setText("");
-                    return 0;
+        } else {
+            if (Value_text.getText().isBlank()) {
+                return 1;
+            } else {
+                String value_texts = Value_text.getText();
+                double values = 0;
+                if (Value_text.textProperty().getValue().matches("[0-9 + .]+")) {
+                    try {
+                        values = Double.parseDouble(value_texts);
+                        String val = String.valueOf(df.format(values));
+                        listOfInventory.setName("$" + val);
+                        Value_text.setText("");
+                        return 0;
 
-                } catch (NumberFormatException nfe) {
-                    return 8;
+                    } catch (NumberFormatException nfe) {
+                        return 8;
+                    }
+                } else {
+                    return 9;
                 }
-            }
-            else{
-                return 9;
             }
         }
     }

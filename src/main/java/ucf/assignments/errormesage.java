@@ -48,6 +48,9 @@ public class errormesage {
             case 10:
                 errormsg = "Please select an item to remove";
                 break;
+            case 11:
+                errormsg = "Please select an item to edit";
+                break;
 
         }
         if(errormsg.matches("")){
