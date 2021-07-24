@@ -14,10 +14,10 @@ public class removeitem {
         ;
 
             if(InventoryList.getItems().removeAll(removeitems)){
-                return 1;
+                return 0;
             }
             else{
-                return 0;
+                return 10;
             }
 
     }

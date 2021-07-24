@@ -50,6 +50,7 @@ public class AddClass {
                                         String val = String.valueOf(df.format(values));
                                         ListOfInventory listofinventorty = new ListOfInventory("$" + val, Serial_Number_Text.getText(), Name_text.getText());
                                         loi.addAll(listofinventorty);
+
                                         return 0;
                                     }
                                     else{

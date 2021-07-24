@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="665.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.UIController">
+<AnchorPane prefHeight="685.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.UIController">
    <children>
       <TableView fx:id="InventoryList" layoutX="14.0" layoutY="55.0" prefHeight="500.0" prefWidth="775.0">
         <columns>
@@ -19,18 +19,18 @@
             <TableColumn fx:id="Name" prefWidth="164.0" text="Value $" />
         </columns>
       </TableView>
-      <TextField fx:id="Value_text" layoutX="410.0" layoutY="578.0" prefHeight="25.0" prefWidth="167.0" />
-      <TextField fx:id="Serial_Number_Text" layoutX="207.0" layoutY="578.0" prefHeight="25.0" prefWidth="167.0" />
-      <TextField fx:id="Name_text" layoutX="24.0" layoutY="578.0" />
-      <Text layoutX="410.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Value" wrappingWidth="82.13671875" />
-      <Text layoutX="207.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serial Number" wrappingWidth="82.13671875" />
+      <TextField fx:id="Value_text" layoutX="410.0" layoutY="575.0" prefHeight="25.0" prefWidth="167.0" />
+      <TextField fx:id="Serial_Number_Text" layoutX="215.0" layoutY="575.0" prefHeight="25.0" prefWidth="167.0" />
+      <TextField fx:id="Name_text" layoutX="24.0" layoutY="578.0" prefHeight="25.0" prefWidth="167.0" />
+      <Text layoutX="410.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Value" wrappingWidth="82.13671875" />
+      <Text layoutX="215.0" layoutY="568.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Serial Number" wrappingWidth="82.13671875" />
       <Text layoutX="24.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="90.13671875" />
-      <Button layoutX="599.0" layoutY="578.0" mnemonicParsing="false" onAction="#Add_Button_Clicked" prefHeight="25.0" prefWidth="63.0" text="Add" />
+      <Button layoutX="599.0" layoutY="575.0" mnemonicParsing="false" onAction="#Add_Button_Clicked" prefHeight="25.0" prefWidth="63.0" text="Add" />
       <Button layoutX="789.0" layoutY="124.0" mnemonicParsing="false" onAction="#Remove_Button_Clicked" text="Remove Selected" />
-      <TextField fx:id="search" layoutX="24.0" layoutY="617.0" prefHeight="25.0" prefWidth="553.0" />
+      <TextField fx:id="search" layoutX="24.0" layoutY="640.0" prefHeight="25.0" prefWidth="553.0" />
       <TextField fx:id="hiddensearch" layoutX="870.0" layoutY="591.0" prefHeight="25.0" prefWidth="12.0" scaleX="0.0" scaleY="0.0" />
-      <Button layoutX="599.0" layoutY="617.0" mnemonicParsing="false" onAction="#Search_Button_Clicked" prefHeight="25.0" prefWidth="63.0" text="Search" />
-      <Button layoutX="670.0" layoutY="617.0" mnemonicParsing="false" onAction="#Clear_Button_Clicked" prefHeight="25.0" prefWidth="63.0" text="Clear" />
+      <Button layoutX="599.0" layoutY="640.0" mnemonicParsing="false" onAction="#Search_Button_Clicked" prefHeight="25.0" prefWidth="63.0" text="Search" />
+      <Button layoutX="670.0" layoutY="640.0" mnemonicParsing="false" onAction="#Clear_Button_Clicked" prefHeight="25.0" prefWidth="63.0" text="Clear" />
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="896.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
@@ -50,5 +50,8 @@
           </Menu>
         </menus>
       </MenuBar>
+      <Button layoutX="215.0" layoutY="601.0" mnemonicParsing="false" onAction="#Edit_SerialNumber_Clicked" prefHeight="25.0" prefWidth="167.0" text="Edit Selected Serial Number" />
+      <Button layoutX="410.0" layoutY="601.0" mnemonicParsing="false" onAction="#Edit_Value_Clicked" prefHeight="25.0" prefWidth="167.0" text="Edit Selected Value" />
+      <Button layoutX="24.0" layoutY="604.0" mnemonicParsing="false" onAction="#Edit_Name_Clicked" prefHeight="25.0" prefWidth="167.0" text="Edit Selected Name" />
    </children>
 </AnchorPane>

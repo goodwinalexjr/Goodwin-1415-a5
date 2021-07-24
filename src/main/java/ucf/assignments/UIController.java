@@ -69,68 +69,21 @@ public class UIController implements Initializable {
     public void Add_Button_Clicked(ActionEvent actionEvent) throws IOException {
         AddClass ac = new AddClass();
         int test = ac.addFunction(loi, Value_text, Name_text, Serial_Number_Text);
-        String errormsg = "";
 
-        switch(test){
-            case 0:
-                break;
-            case 1:
-                errormsg = "Value needs to be filled.";
-                break;
-            case 2:
-                errormsg = "Name needs to be between 2 and 256 characters. You have " + Name_text.getText().length() + " characters.";
-                break;
-            case 3:
-                errormsg = "Name needs to be filled.";
-                break;
-            case 4:
-                errormsg = "Serial Number needs to be filled";
-                break;
-            case 5:
-                errormsg = "The serial Number is Already entered";
-                break;
-            case 6:
-                errormsg = "Serial number format needs to be 10 numbers and letters. You have " + Serial_Number_Text.getText().length() + " characters.";
-                break;
-            case 7:
-                errormsg = "Serial Number can only be 0-9 and A-Z/a-z";
-                break;
-            case 8:
-                errormsg = "You may have a extra . in Value";
-                break;
-            case 9:
-                errormsg = "Value must be currency";
-                break;
+        errormesage em = new errormesage();
+        em.errormessagepopup(loi, test, Value_text, Name_text, Serial_Number_Text, InventoryList);
 
-        }
-        if(errormsg.matches("")){
-            InventoryList.setItems(loi);
-            Name_text.setText("");
-            Serial_Number_Text.setText("");
-            Value_text.setText("");
-        }
-        else{
-
-            FXMLLoader load = new FXMLLoader(getClass().getResource("errormsg.fxml"));
-            Parent page = (Parent) load.load();
-            Stage stage = new Stage();
-            errorcontroller ec = load.getController();
-            ec.text(errormsg);
-            stage.setScene(new Scene(page));
-            stage.setTitle("Error");
-            stage.show();
-
-        }
 
 
     }
 
 
-    public void Remove_Button_Clicked(ActionEvent actionEvent) {
+    public void Remove_Button_Clicked(ActionEvent actionEvent) throws IOException {
         removeitem ri = new removeitem();
         int test = ri.remove(loi, InventoryList);
-        System.out.println(test);
 
+        errormesage em = new errormesage();
+        em.errormessagepopup(loi, test, Value_text, Name_text, Serial_Number_Text, InventoryList);
     }
 
     public void Search_Button_Clicked(ActionEvent actionEvent) {
@@ -139,4 +92,36 @@ public class UIController implements Initializable {
     public void Clear_Button_Clicked(ActionEvent actionEvent) {
     }
 
+    public void Edit_SerialNumber_Clicked(ActionEvent actionEvent) throws IOException {
+        EditClass ec = new EditClass();
+        int test = ec.editSerialNumber(loi, Serial_Number_Text, InventoryList);
+        if(test == 0){
+        }
+        else{
+            errormesage em = new errormesage();
+            em.errormessagepopup(loi, test, Value_text, Name_text, Serial_Number_Text, InventoryList);
+        }
+    }
+
+    public void Edit_Value_Clicked(ActionEvent actionEvent) throws IOException {
+        EditClass ec = new EditClass();
+        int test = ec.editValue(loi, Value_text, InventoryList);
+        if(test == 0){
+        }
+        else{
+            errormesage em = new errormesage();
+            em.errormessagepopup(loi, test, Value_text, Name_text, Serial_Number_Text, InventoryList);
+        }
+    }
+
+    public void Edit_Name_Clicked(ActionEvent actionEvent) throws IOException {
+        EditClass ec = new EditClass();
+        int test = ec.editName(loi, Name_text, InventoryList);
+        if(test == 0){
+        }
+        else{
+            errormesage em = new errormesage();
+            em.errormessagepopup(loi, test, Value_text, Name_text, Serial_Number_Text, InventoryList);
+        }
+    }
 }
