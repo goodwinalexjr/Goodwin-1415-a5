@@ -48,7 +48,6 @@
                         <MenuItem mnemonicParsing="false" onAction="#Load_JSON_Clicked" text="Load JSON" />
                     </items>
                   </Menu>
-              <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
