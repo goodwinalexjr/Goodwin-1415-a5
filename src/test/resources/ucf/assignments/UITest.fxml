@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="685.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.UIController">
+<AnchorPane prefHeight="685.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.UIControllerTest">
    <children>
       <TableView fx:id="InventoryList" layoutX="14.0" layoutY="55.0" prefHeight="500.0" prefWidth="775.0">
         <columns>

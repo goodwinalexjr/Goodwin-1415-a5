@@ -20,17 +20,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class AddClassTest extends ApplicationTest {
 
     public final ObservableList<ListOfInventory> loi = FXCollections.observableArrayList();
-    @FXML
+
     TextField Value_text = new TextField();
-    @FXML
+
     TextField Name_text = new TextField();
-    @FXML
+
     TextField Serial_Number_Text = new TextField();
 
     @Override
     public void start(Stage stage) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("UI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UITest.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -42,9 +42,11 @@ class AddClassTest extends ApplicationTest {
     @Test
     public void addTest(){
 
-        Value_text.setText("22.50");
-        Name_text.setText("JohnDeer");
-        Serial_Number_Text.setText("XXXXXXXXXX");
+        TextField Value_text = new TextField("22");
+
+        TextField Name_text = new TextField("test");
+
+        TextField Serial_Number_Text = new TextField("XXXXXXXXXX");
 
         AddClass ac = new AddClass();
         int actual = ac.addFunction(loi, Value_text, Name_text, Serial_Number_Text);
