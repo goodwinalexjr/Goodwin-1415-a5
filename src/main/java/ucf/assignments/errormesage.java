@@ -21,7 +21,7 @@ public class errormesage {
     public String errormessagepopup(ObservableList<ListOfInventory> loi, int test, TextField Value_text, TextField Name_text, TextField Serial_Number_Text, TableView<ListOfInventory> InventoryList) throws IOException {
         String errormsg = "";
 
-        switch(test){
+        switch (test) {
             case 0:
                 break;
             case 1:
@@ -59,14 +59,13 @@ public class errormesage {
                 break;
 
         }
-        if(errormsg.matches("")){
+        if (errormsg.matches("")) {
             InventoryList.setItems(loi);
             Name_text.setText("");
             Serial_Number_Text.setText("");
             Value_text.setText("");
             return "";
-        }
-        else{
+        } else {
 
             FXMLLoader load = new FXMLLoader(getClass().getResource("/ucf/assignments/errormsg.fxml"));
             Parent page = (Parent) load.load();

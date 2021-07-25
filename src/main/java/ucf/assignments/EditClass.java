@@ -24,8 +24,7 @@ public class EditClass {
         if (listOfInventory.getSerialNumber().isBlank()) {
             return 11;
 
-        }
-        else{
+        } else {
             if (Serial_Number_Text.getText().isBlank()) {
                 return 4;
             } else {
@@ -50,8 +49,6 @@ public class EditClass {
     }
 
 
-
-
     public int editName(ObservableList<ListOfInventory> loi, TextField Name_text, TableView<ListOfInventory> InventoryList) {
 
         ListOfInventory listOfInventory = InventoryList.getSelectionModel().getSelectedItem();
@@ -59,16 +56,13 @@ public class EditClass {
         if (listOfInventory.getName().isBlank()) {
             return 11;
 
-        }
-        else{
-            if(Name_text.getText().isBlank()){
+        } else {
+            if (Name_text.getText().isBlank()) {
                 return 3;
-            }
-            else{
-                if(Name_text.getText().length()==1 || Name_text.getText().length() > 256){
+            } else {
+                if (Name_text.getText().length() == 1 || Name_text.getText().length() > 256) {
                     return 2;
-                }
-                else{
+                } else {
                     listOfInventory.setValue(Name_text.getText());
                     Name_text.setText("");
                     return 0;

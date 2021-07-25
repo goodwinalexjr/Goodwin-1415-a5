@@ -4,7 +4,6 @@
  */
 
 
-
 package ucf.assignments;
 
 import javafx.collections.FXCollections;
@@ -20,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -48,10 +48,7 @@ public class UIController implements Initializable {
     public TextField search;
 
 
-
-
     public final ObservableList<ListOfInventory> loi = FXCollections.observableArrayList();
-
 
 
     //set up a sorted list and also the cell factory to be able to be displayed
@@ -60,18 +57,15 @@ public class UIController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-
         Name.setCellValueFactory(new PropertyValueFactory<ListOfInventory, String>("name"));
         Value.setCellValueFactory(new PropertyValueFactory<ListOfInventory, String>("value"));
         Serial_Number.setCellValueFactory(new PropertyValueFactory<ListOfInventory, String>("serialNumber"));
-
 
 
     }
 
     public void Add_Button_Clicked(ActionEvent actionEvent) throws IOException {
         add();
-
 
 
     }
@@ -91,13 +85,11 @@ public class UIController implements Initializable {
         filter.setPredicate(listOfInventory -> {
             String lcf = search.getText().toLowerCase();
 
-            if(listOfInventory.getValue().toLowerCase().indexOf(lcf) != -1){
+            if (listOfInventory.getValue().toLowerCase().indexOf(lcf) != -1) {
                 return true;
-            }
-            else if(listOfInventory.getValue().toLowerCase().indexOf(lcf) != -1){
+            } else if (listOfInventory.getValue().toLowerCase().indexOf(lcf) != -1) {
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
 
@@ -117,9 +109,8 @@ public class UIController implements Initializable {
     public void Edit_SerialNumber_Clicked(ActionEvent actionEvent) throws IOException {
         EditClass ec = new EditClass();
         int test = ec.editSerialNumber(loi, Serial_Number_Text, InventoryList);
-        if(test == 0){
-        }
-        else{
+        if (test == 0) {
+        } else {
             errormesage em = new errormesage();
             em.errormessagepopup(loi, test, Value_text, Name_text, Serial_Number_Text, InventoryList);
         }
@@ -128,9 +119,8 @@ public class UIController implements Initializable {
     public void Edit_Value_Clicked(ActionEvent actionEvent) throws IOException {
         EditClass ec = new EditClass();
         int test = ec.editValue(loi, Value_text, InventoryList);
-        if(test == 0){
-        }
-        else{
+        if (test == 0) {
+        } else {
             errormesage em = new errormesage();
             em.errormessagepopup(loi, test, Value_text, Name_text, Serial_Number_Text, InventoryList);
         }
@@ -139,9 +129,8 @@ public class UIController implements Initializable {
     public void Edit_Name_Clicked(ActionEvent actionEvent) throws IOException {
         EditClass ec = new EditClass();
         int test = ec.editName(loi, Name_text, InventoryList);
-        if(test == 0){
-        }
-        else{
+        if (test == 0) {
+        } else {
             errormesage em = new errormesage();
             em.errormessagepopup(loi, test, Value_text, Name_text, Serial_Number_Text, InventoryList);
         }
@@ -164,7 +153,7 @@ public class UIController implements Initializable {
         fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("tab-separated value file", "*.txt"));
         File file = fc.showSaveDialog(save);
 
-        if(file != null){
+        if (file != null) {
             export.saveTSV(InventoryList.getItems(), file);
         }
     }
@@ -175,7 +164,7 @@ public class UIController implements Initializable {
         fc.setTitle("Save");
         fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Hypertext Markup Language", "*.html"));
         File file = fc.showSaveDialog(save);
-        if(file != null){
+        if (file != null) {
             export.saveHTML(InventoryList.getItems(), file);
         }
     }
@@ -186,7 +175,7 @@ public class UIController implements Initializable {
         fc.setTitle("Save");
         fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JavaScript Object Notation", "*.json"));
         File file = fc.showSaveDialog(save);
-        if(file != null){
+        if (file != null) {
             export.saveJSON(InventoryList.getItems(), file);
         }
     }
@@ -199,14 +188,14 @@ public class UIController implements Initializable {
         fc.setTitle("Load");
         File file = fc.showOpenDialog(load);
         System.out.println(file.toString());
-        if(file != null){
+        if (file != null) {
 
             ObservableList<ListOfInventory> alllist;
             alllist = InventoryList.getItems();
             loi.removeAll(alllist);
             Scanner myobj = new Scanner(file);
 
-            while(myobj.hasNext()){
+            while (myobj.hasNext()) {
 
                 String Name = myobj.next();
 
@@ -232,21 +221,21 @@ public class UIController implements Initializable {
         fc.setTitle("Load");
         File file = fc.showOpenDialog(load);
         System.out.println(file.toString());
-        if(file != null){
+        if (file != null) {
 
             ObservableList<ListOfInventory> alllist;
             alllist = InventoryList.getItems();
             loi.removeAll(alllist);
             Scanner myobj = new Scanner(file);
 
-            while(myobj.hasNext()){
+            while (myobj.hasNext()) {
 
-                for(int i = 0; i < 12; i++){
+                for (int i = 0; i < 12; i++) {
                     myobj.nextLine();
                 }
                 myobj.nextLine();
                 String test = "";
-                for(int i = 0; i < 1000; i++){
+                for (int i = 0; i < 1000; i++) {
 
                     test = myobj.next();
                     String Name = myobj.next();
@@ -263,7 +252,7 @@ public class UIController implements Initializable {
                     ListOfInventory todolist = new ListOfInventory(Value, SerialNumber, Name);
 
                     loi.addAll(todolist);
-                    if(test.matches("</table>")){
+                    if (test.matches("</table>")) {
                         break;
                     }
                 }
@@ -285,36 +274,36 @@ public class UIController implements Initializable {
         fc.setTitle("Load");
         File file = fc.showOpenDialog(load);
         System.out.println(file.toString());
-        if(file != null){
+        if (file != null) {
 
             ObservableList<ListOfInventory> alllist;
             alllist = InventoryList.getItems();
             loi.removeAll(alllist);
             Scanner myobj = new Scanner(file);
 
-            while(myobj.hasNext()){
+            while (myobj.hasNext()) {
 
                 myobj.nextLine();
-                for(int i = 0; i < 1000; i++){
+                for (int i = 0; i < 1000; i++) {
                     String test = myobj.nextLine();
-                    test =myobj.next();
-                    test =myobj.next();
+                    test = myobj.next();
+                    test = myobj.next();
                     String Name = myobj.next();
-                    test =myobj.next();
-                    test =myobj.next();
-                    test =myobj.next();
+                    test = myobj.next();
+                    test = myobj.next();
+                    test = myobj.next();
                     String SerialNumber = myobj.next();
-                    test =myobj.next();
-                    test =myobj.next();
-                    test =myobj.next();
+                    test = myobj.next();
+                    test = myobj.next();
+                    test = myobj.next();
                     String Value = myobj.next();
-                    test =myobj.next();
+                    test = myobj.next();
                     test = myobj.next();
                     System.out.print(Name + " " + SerialNumber + " " + Value + "\n");
                     ListOfInventory todolist = new ListOfInventory(Value, SerialNumber, Name);
 
                     loi.addAll(todolist);
-                    if(test.matches("}")){
+                    if (test.matches("}")) {
                         break;
                     }
                     test = myobj.next();

@@ -11,7 +11,7 @@ import javafx.scene.control.TableView;
 
 public class removeitem {
 
-    public int remove(ObservableList<ListOfInventory> loi, TableView<ListOfInventory> InventoryList ){
+    public int remove(ObservableList<ListOfInventory> loi, TableView<ListOfInventory> InventoryList) {
 
 
         ObservableList<ListOfInventory> removeitems;
@@ -19,12 +19,11 @@ public class removeitem {
 
         ;
 
-            if(InventoryList.getItems().removeAll(removeitems)){
-                return 0;
-            }
-            else{
-                return 10;
-            }
+        if (InventoryList.getItems().removeAll(removeitems)) {
+            return 0;
+        } else {
+            return 10;
+        }
 
     }
 }

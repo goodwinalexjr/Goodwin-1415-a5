@@ -22,7 +22,7 @@ public class errorcontroller {
     public TextArea errormsg_text;
 
 
-    public void text(String error){
+    public void text(String error) {
         errormsg_text.setText(error);
     }
 }

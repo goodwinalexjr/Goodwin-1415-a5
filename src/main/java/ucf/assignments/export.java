@@ -4,7 +4,6 @@
  */
 
 
-
 package ucf.assignments;
 
 import javafx.collections.ObservableList;
@@ -19,9 +18,9 @@ public class export {
     public static void saveTSV(ObservableList<ListOfInventory> loi, File file) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 
-        for(ListOfInventory list: loi){
-                bw.write(list.getValue() + "\t" + list.getSerialNumber() + "\t" + list.getName() + "\t");
-                bw.newLine();
+        for (ListOfInventory list : loi) {
+            bw.write(list.getValue() + "\t" + list.getSerialNumber() + "\t" + list.getName() + "\t");
+            bw.newLine();
         }
 
         bw.flush();
@@ -53,7 +52,7 @@ public class export {
         bw.newLine();
         bw.write("</tr>");
         bw.newLine();
-        for(ListOfInventory list: loi){
+        for (ListOfInventory list : loi) {
             bw.write("<tr>");
             bw.newLine();
             bw.write("<td> " + list.getValue() + " </td>");
@@ -82,7 +81,7 @@ public class export {
         bw.write("[");
         bw.newLine();
         int i = 0;
-        for(ListOfInventory list: loi){
+        for (ListOfInventory list : loi) {
             i++;
             System.out.println(loi.size());
             bw.write("\t{");
@@ -93,11 +92,10 @@ public class export {
             bw.newLine();
             bw.write("\t\t\"Value\":\t\" " + list.getName() + " \"");
             bw.newLine();
-            if(i == loi.size()){
+            if (i == loi.size()) {
                 bw.write("\t}");
                 bw.newLine();
-            }
-            else{
+            } else {
                 bw.write("\t},");
                 bw.newLine();
             }
