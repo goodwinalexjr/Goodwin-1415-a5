@@ -3,9 +3,9 @@
 ### Adding an Item
 To start you want to add Items into your Inventory
 To do this at the bottom you would want add Items by filing in the Name Box
-    * The name Box must have 2-256 characters
+*The name Box must have 2-256 characters
 Then you can add Items to the Serial Number Box
-    *The serial number must be 10 Numbers or Letters
+  *The serial number must be 10 Numbers or Letters
 Last you would add the Value of all the items
     *This must be a valid currency
     *It will round up to the nearest 2 decimal place if you have a fraction of a cent
