@@ -1,0 +1,55 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class App{
+main
+start
+}
+class AddClass{
+addFunction
+}
+class EditClass{
+editserialnumber
+editValeu
+editName
+}
+class errorcontroller{
+text
+}
+class errormesassage{
+errormessagepopup
+}
+class export{
+saveTSV
+saveHTML
+saveJSON
+}
+class ListofInventory{
+}
+class removeitem{
+remove
+}
+class SerialNumberChecker{
+checkserialnumber
+}
+class UIController{
+}
+
+javafx.Application <|-- App
+UIController -- App
+UIController <|--|> AddClass
+UIController <|-- ListofInventory
+AddClass --|> ListofInventory
+UIController --|> errormesassage
+errormesassage --|> errorcontroller
+errorcontroller --|> javafx.Application
+UIController --|> export
+UIController --|> EditClass
+EditClass --|> ListofInventory
+EditClass <|--|> SerialNumberChecker
+AddClass <|--|> SerialNumberChecker
+UIController --|> removeitem
+removeitem --|> ListofInventory
+
+
+@enduml

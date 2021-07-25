@@ -6,25 +6,19 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import javax.swing.*;
-import java.awt.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.text.DecimalFormat;
-import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class UIController implements Initializable {
 
@@ -183,20 +177,147 @@ public class UIController implements Initializable {
         Stage save = new Stage();
         FileChooser fc = new FileChooser();
         fc.setTitle("Save");
-        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Hypertext Markup Language", "*.html"));
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JavaScript Object Notation", "*.json"));
         File file = fc.showSaveDialog(save);
         if(file != null){
             export.saveJSON(InventoryList.getItems(), file);
         }
     }
 
-    public void Load_TSV_Clicked(ActionEvent actionEvent) {
+    public void Load_TSV_Clicked(ActionEvent actionEvent) throws FileNotFoundException {
 
+        Stage load = new Stage();
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("tab-separated value file", "*.txt"));
+        fc.setTitle("Load");
+        File file = fc.showOpenDialog(load);
+        System.out.println(file.toString());
+        if(file != null){
+
+            ObservableList<ListOfInventory> alllist;
+            alllist = InventoryList.getItems();
+            loi.removeAll(alllist);
+            Scanner myobj = new Scanner(file);
+
+            while(myobj.hasNext()){
+
+                String Name = myobj.next();
+
+                String SerialNumber = myobj.next();
+
+                String Value = myobj.next();
+
+
+                System.out.print(Name + " " + SerialNumber + " " + Value + "\n");
+                ListOfInventory todolist = new ListOfInventory(Value, SerialNumber, Name);
+
+                loi.addAll(todolist);
+
+            }
+            InventoryList.setItems(loi);
+        }
     }
 
-    public void Load_HTML_Clicked(ActionEvent actionEvent) {
+    public void Load_HTML_Clicked(ActionEvent actionEvent) throws FileNotFoundException {
+        Stage load = new Stage();
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Hypertext Markup Language", "*.html"));
+        fc.setTitle("Load");
+        File file = fc.showOpenDialog(load);
+        System.out.println(file.toString());
+        if(file != null){
+
+            ObservableList<ListOfInventory> alllist;
+            alllist = InventoryList.getItems();
+            loi.removeAll(alllist);
+            Scanner myobj = new Scanner(file);
+
+            while(myobj.hasNext()){
+
+                for(int i = 0; i < 12; i++){
+                    myobj.nextLine();
+                }
+                myobj.nextLine();
+                String test = "";
+                for(int i = 0; i < 1000; i++){
+
+                    test = myobj.next();
+                    String Name = myobj.next();
+                    test = myobj.next();
+                    test = myobj.next();
+                    String SerialNumber = myobj.next();
+                    myobj.next();
+                    myobj.next();
+                    String Value = myobj.next();
+                    myobj.next();
+                    test = myobj.next();
+                    test = myobj.next();
+                    System.out.print(Name + " " + SerialNumber + " " + Value + "\n");
+                    ListOfInventory todolist = new ListOfInventory(Value, SerialNumber, Name);
+
+                    loi.addAll(todolist);
+                    if(test.matches("</table>")){
+                        break;
+                    }
+                }
+                myobj.nextLine();
+                myobj.nextLine();
+                myobj.nextLine();
+                myobj.nextLine();
+
+
+            }
+            InventoryList.setItems(loi);
+        }
     }
 
-    public void Load_JSON_Clicked(ActionEvent actionEvent) {
+    public void Load_JSON_Clicked(ActionEvent actionEvent) throws FileNotFoundException {
+        Stage load = new Stage();
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JavaScript Object Notation", "*.json"));
+        fc.setTitle("Load");
+        File file = fc.showOpenDialog(load);
+        System.out.println(file.toString());
+        if(file != null){
+
+            ObservableList<ListOfInventory> alllist;
+            alllist = InventoryList.getItems();
+            loi.removeAll(alllist);
+            Scanner myobj = new Scanner(file);
+
+            while(myobj.hasNext()){
+
+                myobj.nextLine();
+                for(int i = 0; i < 1000; i++){
+                    String test = myobj.nextLine();
+                    test =myobj.next();
+                    test =myobj.next();
+                    String Name = myobj.next();
+                    test =myobj.next();
+                    test =myobj.next();
+                    test =myobj.next();
+                    String SerialNumber = myobj.next();
+                    test =myobj.next();
+                    test =myobj.next();
+                    test =myobj.next();
+                    String Value = myobj.next();
+                    test =myobj.next();
+                    test = myobj.next();
+                    System.out.print(Name + " " + SerialNumber + " " + Value + "\n");
+                    ListOfInventory todolist = new ListOfInventory(Value, SerialNumber, Name);
+
+                    loi.addAll(todolist);
+                    if(test.matches("}")){
+                        break;
+                    }
+                    test = myobj.next();
+
+                }
+                myobj.next();
+
+
+            }
+            InventoryList.setItems(loi);
+        }
     }
 }

@@ -10,7 +10,7 @@ import java.io.IOException;
 public class export {
 
     public static void saveTSV(ObservableList<ListOfInventory> loi, File file) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter(file + ".txt"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 
         for(ListOfInventory list: loi){
                 bw.write(list.getValue() + "\t" + list.getSerialNumber() + "\t" + list.getName() + "\t");
@@ -22,7 +22,7 @@ public class export {
     }
 
     public static void saveHTML(ObservableList<ListOfInventory> loi, File file) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter(file + ".html"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 
         bw.write("<!DOCKTYPE html>");
         bw.newLine();
@@ -49,11 +49,11 @@ public class export {
         for(ListOfInventory list: loi){
             bw.write("<tr>");
             bw.newLine();
-            bw.write("<td>" + list.getValue() + "</td>");
+            bw.write("<td> " + list.getValue() + " </td>");
             bw.newLine();
-            bw.write("<td>" + list.getSerialNumber() + "</td>");
+            bw.write("<td> " + list.getSerialNumber() + " </td>");
             bw.newLine();
-            bw.write("<td>" + list.getName() + "</td>");
+            bw.write("<td> " + list.getName() + " </td>");
             bw.newLine();
             bw.write("</tr>");
             bw.newLine();
@@ -70,25 +70,33 @@ public class export {
     }
 
     public static void saveJSON(ObservableList<ListOfInventory> loi, File file) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter(file + ".json"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 
         bw.write("[");
         bw.newLine();
-
+        int i = 0;
         for(ListOfInventory list: loi){
+            i++;
+            System.out.println(loi.size());
             bw.write("\t{");
             bw.newLine();
-            bw.write("\t\t\"Name\":\t\"" + list.getValue() + "\",");
+            bw.write("\t\t\"Name\":\t\" " + list.getValue() + " \",");
             bw.newLine();
-            bw.write("\t\t\"SerialNumber\":\t\"" + list.getSerialNumber() + "\",");
+            bw.write("\t\t\"SerialNumber\":\t\" " + list.getSerialNumber() + " \",");
             bw.newLine();
-            bw.write("\t\t\"Value\":\t\"" + list.getName() + "\"");
+            bw.write("\t\t\"Value\":\t\" " + list.getName() + " \"");
             bw.newLine();
-            bw.write("\t},");
-            bw.newLine();
+            if(i == loi.size()){
+                bw.write("\t}");
+                bw.newLine();
+            }
+            else{
+                bw.write("\t},");
+                bw.newLine();
+            }
         }
 
-        bw.write("}");
+        bw.write("]");
 
         bw.flush();
         bw.close();
