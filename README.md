@@ -4,16 +4,16 @@
 To start you want to add Items into your Inventory
 To do this at the bottom you would want add Items by filing in the Name Box
 
-*The name Box must have 2-256 characters
+- The name Box must have 2-256 characters
 
 Then you can add Items to the Serial Number Box
 
-*The serial number must be 10 Numbers or Letters
+- The serial number must be 10 Numbers or Letters
 
 Last you would add the Value of all the items
 
-*This must be a valid currency
-*It will round up to the nearest 2 decimal place if you have a fraction of a cent
+- This must be a valid currency
+- It will round up to the nearest 2 decimal place if you have a fraction of a cent
 
 Then you would click Add, and it will add the item to the list
 
@@ -25,7 +25,7 @@ Then you just need to click on the remove selected or choose Edit -> Delete from
 To edit an item you first neeed to select the item
 Then you would fill in the Part you want to edit where you added the item
 
-*Same rules apply for adding (See adding for rules)
+- Same rules apply for adding (See adding for rules)
 
 Then click on the box below where it says Edit Selected 
 
