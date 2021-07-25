@@ -68,7 +68,7 @@ public class errormesage {
         }
         else{
 
-            FXMLLoader load = new FXMLLoader(getClass().getResource("errormsg.fxml"));
+            FXMLLoader load = new FXMLLoader(getClass().getResource("/ucf/assignments/errormsg.fxml"));
             Parent page = (Parent) load.load();
             Stage stage = new Stage();
             errorcontroller ec = load.getController();
