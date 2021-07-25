@@ -14,13 +14,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class UIController implements Initializable {
@@ -42,11 +45,10 @@ public class UIController implements Initializable {
     public TextField Name_text;
     @FXML
     public TextField search;
-    @FXML
-    public TextField hiddensearch;
 
-    String field = null;
-    public double values = 0;
+
+
+
     public final ObservableList<ListOfInventory> loi = FXCollections.observableArrayList();
 
 
@@ -67,11 +69,7 @@ public class UIController implements Initializable {
     }
 
     public void Add_Button_Clicked(ActionEvent actionEvent) throws IOException {
-        AddClass ac = new AddClass();
-        int test = ac.addFunction(loi, Value_text, Name_text, Serial_Number_Text);
-
-        errormesage em = new errormesage();
-        em.errormessagepopup(loi, test, Value_text, Name_text, Serial_Number_Text, InventoryList);
+        add();
 
 
 
@@ -87,9 +85,32 @@ public class UIController implements Initializable {
     }
 
     public void Search_Button_Clicked(ActionEvent actionEvent) {
+        FilteredList<ListOfInventory> filter = new FilteredList<ListOfInventory>(loi, b -> true);
+
+        filter.setPredicate(listOfInventory -> {
+            String lcf = search.getText().toLowerCase();
+
+            if(listOfInventory.getValue().toLowerCase().indexOf(lcf) != -1){
+                return true;
+            }
+            else if(listOfInventory.getValue().toLowerCase().indexOf(lcf) != -1){
+                return true;
+            }
+            else{
+                return false;
+            }
+
+        });
+
+        SortedList<ListOfInventory> sort = new SortedList<ListOfInventory>(filter);
+        sort.comparatorProperty().bind(InventoryList.comparatorProperty());
+        InventoryList.setItems(sort);
+        search.setText("");
+
     }
 
     public void Clear_Button_Clicked(ActionEvent actionEvent) {
+        InventoryList.setItems(loi);
     }
 
     public void Edit_SerialNumber_Clicked(ActionEvent actionEvent) throws IOException {
@@ -123,5 +144,59 @@ public class UIController implements Initializable {
             errormesage em = new errormesage();
             em.errormessagepopup(loi, test, Value_text, Name_text, Serial_Number_Text, InventoryList);
         }
+    }
+
+    public int add() throws IOException {
+        AddClass ac = new AddClass();
+        int test = ac.addFunction(loi, Value_text, Name_text, Serial_Number_Text);
+
+        errormesage em = new errormesage();
+        em.errormessagepopup(loi, test, Value_text, Name_text, Serial_Number_Text, InventoryList);
+
+        return test;
+    }
+
+    public void Save_TSV_Clicked(ActionEvent actionEvent) throws IOException {
+        Stage save = new Stage();
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Save");
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("tab-separated value file", "*.txt"));
+        File file = fc.showSaveDialog(save);
+
+        if(file != null){
+            export.saveTSV(InventoryList.getItems(), file);
+        }
+    }
+
+    public void Save_HTML_Clicked(ActionEvent actionEvent) throws IOException {
+        Stage save = new Stage();
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Save");
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Hypertext Markup Language", "*.html"));
+        File file = fc.showSaveDialog(save);
+        if(file != null){
+            export.saveHTML(InventoryList.getItems(), file);
+        }
+    }
+
+    public void Save_JSON_Clicked(ActionEvent actionEvent) throws IOException {
+        Stage save = new Stage();
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Save");
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Hypertext Markup Language", "*.html"));
+        File file = fc.showSaveDialog(save);
+        if(file != null){
+            export.saveJSON(InventoryList.getItems(), file);
+        }
+    }
+
+    public void Load_TSV_Clicked(ActionEvent actionEvent) {
+
+    }
+
+    public void Load_HTML_Clicked(ActionEvent actionEvent) {
+    }
+
+    public void Load_JSON_Clicked(ActionEvent actionEvent) {
     }
 }

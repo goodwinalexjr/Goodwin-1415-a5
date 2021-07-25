@@ -28,24 +28,32 @@
       <Button layoutX="599.0" layoutY="575.0" mnemonicParsing="false" onAction="#Add_Button_Clicked" prefHeight="25.0" prefWidth="63.0" text="Add" />
       <Button layoutX="789.0" layoutY="124.0" mnemonicParsing="false" onAction="#Remove_Button_Clicked" text="Remove Selected" />
       <TextField fx:id="search" layoutX="24.0" layoutY="640.0" prefHeight="25.0" prefWidth="553.0" />
-      <TextField fx:id="hiddensearch" layoutX="870.0" layoutY="591.0" prefHeight="25.0" prefWidth="12.0" scaleX="0.0" scaleY="0.0" />
       <Button layoutX="599.0" layoutY="640.0" mnemonicParsing="false" onAction="#Search_Button_Clicked" prefHeight="25.0" prefWidth="63.0" text="Search" />
       <Button layoutX="670.0" layoutY="640.0" mnemonicParsing="false" onAction="#Clear_Button_Clicked" prefHeight="25.0" prefWidth="63.0" text="Clear" />
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="896.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
+                  <Menu mnemonicParsing="false" text="Save">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#Save_TSV_Clicked" text="Save as TSV" />
+                        <MenuItem mnemonicParsing="false" onAction="#Save_HTML_Clicked" text="Save as HTML" />
+                        <MenuItem mnemonicParsing="false" onAction="#Save_JSON_Clicked" text="Save as JSON" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Load">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#Load_TSV_Clicked" text="Load TSV" />
+                        <MenuItem mnemonicParsing="false" onAction="#Load_HTML_Clicked" text="Load HTML" />
+                        <MenuItem mnemonicParsing="false" onAction="#Load_JSON_Clicked" text="Load JSON" />
+                    </items>
+                  </Menu>
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#Remove_Button_Clicked" text="Delete" />
             </items>
           </Menu>
         </menus>
