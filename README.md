@@ -1,4 +1,4 @@
-#Welcome to the inventory manager.
+# Welcome to the inventory manager.
 
 ### Adding an Item
 To start you want to add Items into your Inventory
