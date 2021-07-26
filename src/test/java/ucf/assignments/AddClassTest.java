@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -108,6 +109,139 @@ class AddClassTest extends ApplicationTest {
         int actual = ac.addFunction(loi, Value_text, Name_text, Serial_Number_Text);
 
         int expected = 3;
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void addTesterror4(){
+
+        TextField Value_text = new TextField("22");
+
+        TextField Name_text = new TextField("test");
+
+        TextField Serial_Number_Text = new TextField("");
+
+        AddClass ac = new AddClass();
+        int actual = ac.addFunction(loi, Value_text, Name_text, Serial_Number_Text);
+
+        int expected = 4;
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void addTesterror5(){
+
+        TextField Value_text = new TextField("22");
+
+        TextField Name_text = new TextField("Test");
+
+        TextField Serial_Number_Text = new TextField("XXXXXXXXXX");
+
+        ListOfInventory listOfInventory = new ListOfInventory("Test", "XXXXXXXXXX", "34.50");
+        loi.addAll(listOfInventory);
+        TableView<ListOfInventory> InventoryList = new TableView<ListOfInventory>();
+        InventoryList.setItems(loi);
+
+        AddClass ac = new AddClass();
+        int actual = ac.addFunction(loi, Value_text, Name_text, Serial_Number_Text);
+
+        int expected = 5;
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void addTesterror6(){
+
+        TextField Value_text = new TextField("22");
+
+        TextField Name_text = new TextField("Test");
+
+        TextField Serial_Number_Text = new TextField("XXXXXXXXXX2");
+
+        ListOfInventory listOfInventory = new ListOfInventory("Test", "XXXXXXXXXX", "34.50");
+        loi.addAll(listOfInventory);
+        TableView<ListOfInventory> InventoryList = new TableView<ListOfInventory>();
+        InventoryList.setItems(loi);
+
+        AddClass ac = new AddClass();
+        int actual = ac.addFunction(loi, Value_text, Name_text, Serial_Number_Text);
+
+        int expected = 6;
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void addTesterror7(){
+
+        TextField Value_text = new TextField("22");
+
+        TextField Name_text = new TextField("Test");
+
+        TextField Serial_Number_Text = new TextField("@#34567891");
+
+        ListOfInventory listOfInventory = new ListOfInventory("Test", "XXXXXXXXXX", "34.50");
+        loi.addAll(listOfInventory);
+        TableView<ListOfInventory> InventoryList = new TableView<ListOfInventory>();
+        InventoryList.setItems(loi);
+
+        AddClass ac = new AddClass();
+        int actual = ac.addFunction(loi, Value_text, Name_text, Serial_Number_Text);
+
+        int expected = 7;
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void addTesterror8(){
+
+        TextField Value_text = new TextField("22.22.");
+
+        TextField Name_text = new TextField("Test");
+
+        TextField Serial_Number_Text = new TextField("XXXXXXXXXX");
+
+        ListOfInventory listOfInventory = new ListOfInventory("Test", "XXXXXXXXXX", "34.50");
+        loi.addAll(listOfInventory);
+        TableView<ListOfInventory> InventoryList = new TableView<ListOfInventory>();
+        InventoryList.setItems(loi);
+
+        AddClass ac = new AddClass();
+        int actual = ac.addFunction(loi, Value_text, Name_text, Serial_Number_Text);
+
+        int expected = 8;
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void addTesterror9(){
+
+        TextField Value_text = new TextField("22A");
+
+        TextField Name_text = new TextField("Test");
+
+        TextField Serial_Number_Text = new TextField("XXXXXXXXXX");
+
+        ListOfInventory listOfInventory = new ListOfInventory("Test", "XXXXXXXXXX", "34.50");
+        loi.addAll(listOfInventory);
+        TableView<ListOfInventory> InventoryList = new TableView<ListOfInventory>();
+        InventoryList.setItems(loi);
+
+        AddClass ac = new AddClass();
+        int actual = ac.addFunction(loi, Value_text, Name_text, Serial_Number_Text);
+
+        int expected = 9;
 
         assertEquals(expected, actual);
 
