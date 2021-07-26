@@ -29,7 +29,6 @@ class AddClassTest extends ApplicationTest {
     public final ObservableList<ListOfInventory> loi = FXCollections.observableArrayList();
 
 
-
     @Override
     public void start(Stage stage) throws IOException {
 

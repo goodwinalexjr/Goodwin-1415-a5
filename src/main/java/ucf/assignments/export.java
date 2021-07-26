@@ -17,8 +17,9 @@ public class export {
 
     public static void saveTSV(ObservableList<ListOfInventory> loi, File file) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-
+        String test = "";
         for (ListOfInventory list : loi) {
+            test = list.getValue() + "\t" + list.getSerialNumber() + "\t" + list.getName() + "\t";
             bw.write(list.getValue() + "\t" + list.getSerialNumber() + "\t" + list.getName() + "\t");
             bw.newLine();
         }
