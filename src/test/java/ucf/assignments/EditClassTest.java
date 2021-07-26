@@ -55,6 +55,27 @@ class EditClassTest extends ApplicationTest {
     }
 
     @Test
+    void editSerialNumbererror1() {
+        TextField Value_text = new TextField("22");
+
+        TextField Name_text = new TextField("test");
+
+        TextField Serial_Number_Text = new TextField("");
+
+        ListOfInventory listOfInventory = new ListOfInventory("Test", "ABCDEFAAAA", "34.50");
+        loi.addAll(listOfInventory);
+        TableView<ListOfInventory> InventoryList = new TableView<ListOfInventory>();
+        InventoryList.setItems(loi);
+        InventoryList.getSelectionModel().select(0);
+
+        EditClass ec = new EditClass();
+        int actual = ec.editSerialNumber(loi, Serial_Number_Text, InventoryList);
+        int expected = 4;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void editName() {
 
         TextField Name_text = new TextField("test");
