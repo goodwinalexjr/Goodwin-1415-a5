@@ -76,6 +76,69 @@ class EditClassTest extends ApplicationTest {
     }
 
     @Test
+    void editSerialNumbererror2() {
+        TextField Value_text = new TextField("22");
+
+        TextField Name_text = new TextField("test");
+
+        TextField Serial_Number_Text = new TextField("ABCDEFAAAA");
+
+        ListOfInventory listOfInventory = new ListOfInventory("Test", "ABCDEFAAAA", "34.50");
+        loi.addAll(listOfInventory);
+        TableView<ListOfInventory> InventoryList = new TableView<ListOfInventory>();
+        InventoryList.setItems(loi);
+        InventoryList.getSelectionModel().select(0);
+
+        EditClass ec = new EditClass();
+        int actual = ec.editSerialNumber(loi, Serial_Number_Text, InventoryList);
+        int expected = 5;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void editSerialNumbererror3() {
+        TextField Value_text = new TextField("22");
+
+        TextField Name_text = new TextField("test");
+
+        TextField Serial_Number_Text = new TextField("ABCDEFAAAAAA");
+
+        ListOfInventory listOfInventory = new ListOfInventory("Test", "ABCDEFAAAA", "34.50");
+        loi.addAll(listOfInventory);
+        TableView<ListOfInventory> InventoryList = new TableView<ListOfInventory>();
+        InventoryList.setItems(loi);
+        InventoryList.getSelectionModel().select(0);
+
+        EditClass ec = new EditClass();
+        int actual = ec.editSerialNumber(loi, Serial_Number_Text, InventoryList);
+        int expected = 6;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void editSerialNumbererror4() {
+        TextField Value_text = new TextField("22");
+
+        TextField Name_text = new TextField("test");
+
+        TextField Serial_Number_Text = new TextField("@#$DSAERWS");
+
+        ListOfInventory listOfInventory = new ListOfInventory("Test", "ABCDEFAAAA", "34.50");
+        loi.addAll(listOfInventory);
+        TableView<ListOfInventory> InventoryList = new TableView<ListOfInventory>();
+        InventoryList.setItems(loi);
+        InventoryList.getSelectionModel().select(0);
+
+        EditClass ec = new EditClass();
+        int actual = ec.editSerialNumber(loi, Serial_Number_Text, InventoryList);
+        int expected = 7;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void editName() {
 
         TextField Name_text = new TextField("test");
@@ -91,6 +154,46 @@ class EditClassTest extends ApplicationTest {
         EditClass ec = new EditClass();
         int actual = ec.editName(loi, Name_text, InventoryList);
         int expected = 0;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void editNameerror1() {
+
+        TextField Name_text = new TextField("t");
+
+        TextField Serial_Number_Text = new TextField("XXXXXXXXXX");
+
+        ListOfInventory listOfInventory = new ListOfInventory("Test", "ABCDEFAAAA", "34.50");
+        loi.addAll(listOfInventory);
+        TableView<ListOfInventory> InventoryList = new TableView<ListOfInventory>();
+        InventoryList.setItems(loi);
+        InventoryList.getSelectionModel().select(0);
+
+        EditClass ec = new EditClass();
+        int actual = ec.editName(loi, Name_text, InventoryList);
+        int expected = 2;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void editNameerror2() {
+
+        TextField Name_text = new TextField("");
+
+        TextField Serial_Number_Text = new TextField("XXXXXXXXXX");
+
+        ListOfInventory listOfInventory = new ListOfInventory("Test", "ABCDEFAAAA", "34.50");
+        loi.addAll(listOfInventory);
+        TableView<ListOfInventory> InventoryList = new TableView<ListOfInventory>();
+        InventoryList.setItems(loi);
+        InventoryList.getSelectionModel().select(0);
+
+        EditClass ec = new EditClass();
+        int actual = ec.editName(loi, Name_text, InventoryList);
+        int expected = 3;
 
         assertEquals(expected, actual);
     }
@@ -113,6 +216,72 @@ class EditClassTest extends ApplicationTest {
         EditClass ec = new EditClass();
         int actual = ec.editValue(loi,Value_text , InventoryList);
         int expected = 0;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void editValueerror1() {
+
+        TextField Name_text = new TextField("test");
+
+        TextField Serial_Number_Text = new TextField("XXXXXXXXXX");
+
+        TextField Value_text = new TextField("");
+
+        ListOfInventory listOfInventory = new ListOfInventory("Test", "ABCDEFAAAA", "34.50");
+        loi.addAll(listOfInventory);
+        TableView<ListOfInventory> InventoryList = new TableView<ListOfInventory>();
+        InventoryList.setItems(loi);
+        InventoryList.getSelectionModel().select(0);
+
+        EditClass ec = new EditClass();
+        int actual = ec.editValue(loi,Value_text , InventoryList);
+        int expected = 1;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void editValueerror2() {
+
+        TextField Name_text = new TextField("test");
+
+        TextField Serial_Number_Text = new TextField("XXXXXXXXXX");
+
+        TextField Value_text = new TextField("22A");
+
+        ListOfInventory listOfInventory = new ListOfInventory("Test", "ABCDEFAAAA", "34.50");
+        loi.addAll(listOfInventory);
+        TableView<ListOfInventory> InventoryList = new TableView<ListOfInventory>();
+        InventoryList.setItems(loi);
+        InventoryList.getSelectionModel().select(0);
+
+        EditClass ec = new EditClass();
+        int actual = ec.editValue(loi,Value_text , InventoryList);
+        int expected = 9;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void editValueerror3() {
+
+        TextField Name_text = new TextField("test");
+
+        TextField Serial_Number_Text = new TextField("XXXXXXXXXX");
+
+        TextField Value_text = new TextField("22.22.");
+
+        ListOfInventory listOfInventory = new ListOfInventory("Test", "ABCDEFAAAA", "34.50");
+        loi.addAll(listOfInventory);
+        TableView<ListOfInventory> InventoryList = new TableView<ListOfInventory>();
+        InventoryList.setItems(loi);
+        InventoryList.getSelectionModel().select(0);
+
+        EditClass ec = new EditClass();
+        int actual = ec.editValue(loi,Value_text , InventoryList);
+        int expected = 8;
 
         assertEquals(expected, actual);
     }
